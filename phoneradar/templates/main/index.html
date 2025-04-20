@@ -1,6 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>Welcome to Phone Radar</h1>
-<p>This is the main page for our phone review website.</p>
+<div class="welcome-container">
+    <img src="{% static 'images/logo.png' %}" alt="Phone Radar Logo" class="logo">
+    <h1 class="welcome-heading">Welcome to Phone Radar</h1>
+    <p class="welcome-text">Your trusted source for honest phone reviews</p>
+</div>
 {% endblock %}

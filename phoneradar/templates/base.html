@@ -1,12 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Phone Radar</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
     <header>
-        <h1>Phone Radar</h1>
-        <nav>
+        <!-- <h1>Phone Radar</h1> -->
+        <!-- <nav>
             <a href="{% url 'index' %}">Home</a>
             <a href="{% url 'brand_list' %}">Brands</a>
             <a href="{% url 'model_list' %}">Models</a>
@@ -17,7 +21,7 @@
                 <a href="{% url 'login' %}">Login</a>
                 <a href="{% url 'register' %}">Register</a>
             {% endif %}
-        </nav>
+        </nav> -->
     </header>
     <main>
         {% block content %}
