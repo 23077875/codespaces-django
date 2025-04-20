@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phone Radar</title>
+</head>
+<body>
+    <header>
+        <h1>Phone Radar</h1>
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'brand_list' %}">Brands</a>
+            <a href="{% url 'model_list' %}">Models</a>
+            <a href="{% url 'review_list' %}">Reviews</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'add_review' %}" class="nav-link">Add Review</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

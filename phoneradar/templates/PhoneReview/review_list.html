@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Phone Reviews</h2>
+<ul>
+    {% for review in reviews %}
+    <li>
+        <h3><a href="#">{{ review.title }}</a></h3>
+        <p>Phone: {{ review.phone_model }}</p>
+        <p>Rating: {{ review.rating }}/5</p>
+        <p>Published: {{ review.date_published|date:"M d, Y" }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
