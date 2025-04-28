@@ -1,0 +1,132 @@
+{% extends 'gamereview/base.html' %}
+
+{% block title %}Reviews for {{ game.title }} | GameRev{% endblock %}
+
+{% block content %}
+    <div class="game-header">
+        {% if game.cover_image %}
+            <img src="{{ game.cover_image }}" alt="{{ game.title }}" class="game-cover-large">
+        {% else %}
+            <div class="game-cover-large placeholder">No Image</div>
+        {% endif %}
+        <div class="game-details">
+            <h1>{{ game.title }}</h1>
+            <div class="game-meta">
+                <span class="developer">{{ game.developer }}</span> | 
+                <span class="genre">{{ game.genre }}</span> | 
+                <span class="release-date">{{ game.release_date }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="reviews-section">
+        <h2>Player Reviews</h2>
+        
+        {% if reviews %}
+            <div class="review-list">
+                {% for review in reviews %}
+                    <div class="review-card">
+                        <div class="review-header">
+                            <h3>{{ review.author }}</h3>
+                            <div class="rating">Rating: {{ review.rating }}/10</div>
+                        </div>
+                        <div class="review-content">
+                            <p>{{ review.content }}</p>
+                        </div>
+                        <div class="review-footer">
+                            <small>{{ review.date_posted }}</small>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-reviews">No reviews yet. Be the first to review!</p>
+            <a href="#" class="btn">Write a Review</a>
+        {% endif %}
+    </div>
+
+    <style>
+        .game-header {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+        
+        .game-cover-large {
+            width: 200px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-cover-large.placeholder {
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .game-details h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-meta {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .reviews-section {
+            margin-top: 2rem;
+        }
+        
+        .reviews-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .review-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .review-header h3 {
+            color: var(--dark);
+        }
+        
+        .review-content {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .review-footer {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .no-reviews {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+    </style>
+{% endblock %}
